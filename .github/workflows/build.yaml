@@ -2,7 +2,6 @@ name: Build
 
 on: # trigger
   workflow_call: # whenever this workflow needs to be called from another
-
 jobs:
   build:
     runs-on: ubuntu-latest
