@@ -1,8 +1,13 @@
 name: CICD Pipeline
 
 on:
-  push:
-
+ push:
+        branches:
+            - main
+            - 'feature/**'
+        paths-ignore:
+          #  - '.github/workflows/*'  
+            - README.md 
 jobs:
   code:
     uses: ./.github/workflows/code.yaml # this is how workflows is called
