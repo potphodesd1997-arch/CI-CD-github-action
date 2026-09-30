@@ -5,7 +5,7 @@ on: # trigger
 
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: Code clone
         uses: actions/checkout@v7
