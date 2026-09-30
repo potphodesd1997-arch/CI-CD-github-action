@@ -6,7 +6,7 @@ on:
             - main
             - 'feature/**'
         paths-ignore:
-            - '.github/workflows/*'  
+           # - '.github/workflows/*'  
             - README.md 
 jobs:
   code:
@@ -20,3 +20,5 @@ jobs:
   deploy:
     needs: test
     uses: ./.github/workflows/deploy.yaml
+    with:
+      env: prod
