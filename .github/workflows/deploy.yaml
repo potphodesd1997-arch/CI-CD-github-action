@@ -1,25 +1,21 @@
 name: Deploy
 
 on:
-  workflow_call: # reusable workflow trigger
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
 
 jobs:
   build:
     runs-on: self-hosted
-    env:
-      ENVIRONMENT: prod
-      APP_NAME: myapp   # example variable
-      DEPLOY_PATH: /var/www/html
-
     steps:
       - name: Code clone
         uses: actions/checkout@v4
       
       - name: Deploy via nginx
-        run: cp index.html $DEPLOY_PATH
+        run: cp index.html /var/www/html
         
       - name: Deploy the code
-        run: echo "Code Deployed to AWS EC2 instance in $ENVIRONMENT environment"
-
-
-          
+        run: echo "Code Deployed to AWS EC2 instance in ${{ inputs.environment }} environment"
