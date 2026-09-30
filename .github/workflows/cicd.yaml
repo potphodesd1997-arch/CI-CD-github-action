@@ -1,24 +1,27 @@
 name: CICD Pipeline
 
 on:
- push:
-        branches:
-            - main
-            - 'feature/**'
-        paths-ignore:
-           # - '.github/workflows/*'  
-            - README.md 
+  push:
+    branches:
+      - main
+      - 'feature/**'
+    paths-ignore:
+      - README.md
+
 jobs:
   code:
-    uses: ./.github/workflows/code.yaml # this is how workflows is called
+    uses: ./.github/workflows/code.yaml
+
   build:
     needs: code
     uses: ./.github/workflows/build.yaml
+
   test:
     needs: build
     uses: ./.github/workflows/test.yaml
+
   deploy:
     needs: test
     uses: ./.github/workflows/deploy.yaml
     with:
-      env: prod
+      environment: prod   # pass as input to deploy.yaml
