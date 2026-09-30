@@ -24,4 +24,4 @@ jobs:
     needs: test
     uses: ./.github/workflows/deploy.yaml
     with:
-      environment: prod   # pass as input to deploy.yaml
+      environment: prod   # must match input name in deploy.yaml
